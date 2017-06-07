@@ -49,9 +49,7 @@ function parse(str) {
   if (str.length > 100) {
     return;
   }
-  var match = /^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(
-    str
-  );
+  var match = /^((?:\d+)?\.?\d+) *(\w{0,12})?$/i.exec(str);
   if (!match) {
     return;
   }
@@ -130,11 +128,13 @@ function fmtShort(ms) {
  */
 
 function fmtLong(ms) {
-  return plural(ms, d, 'day') ||
+  return (
+    plural(ms, d, 'day') ||
     plural(ms, h, 'hour') ||
     plural(ms, m, 'minute') ||
     plural(ms, s, 'second') ||
-    ms + ' ms';
+    ms + ' ms'
+  );
 }
 
 /**
