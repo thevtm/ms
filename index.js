@@ -46,9 +46,6 @@ module.exports = function(val, options) {
 
 function parse(str) {
   str = String(str);
-  if (str.length > 100) {
-    return;
-  }
   var match = /^((?:\d+)?\.?\d+) *(\w{0,12})?$/i.exec(str);
   if (!match) {
     return;
